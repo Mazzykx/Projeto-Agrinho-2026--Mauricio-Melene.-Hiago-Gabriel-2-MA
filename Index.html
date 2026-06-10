@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Guardian Trees - Protegendo Árvores em Extinção</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Botão Dark Mode -->
+<button class="dark-mode-toggle" id="darkModeToggle">
+    🌙 Dark Mode
+</button>
+
+<header>
+    <nav>
+        <div class="logo">
+            <span>🌿</span> Guardian Trees
+        </div>
+        <ul class="nav-links">
+            <li><a href="#especies">🌳 Espécies</a></li>
+            <li><a href="#sementes">🌰 Sementes</a></li>
+            <li><a href="#prevenir">🛡️ Prevenção</a></li>
+            <li><a href="#acao">🌱 Agir</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Árvores que desaparecem silenciosamente</h1>
+        <p>Cada semente guarda uma história. Descubra como proteger essas espécies únicas e garantir que as florestas do amanhã floresçam.</p>
+        <a href="#especies" class="btn">🌱 Conheça as espécies</a>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Seção Árvores em Extinção -->
+    <div class="title-wrapper" id="especies">
+        <h2 class="section-title">🌳 Árvores ameaçadas de extinção</h2>
+    </div>
+    <div class="cards-grid" id="treeCardsContainer">
+        <!-- Árvores serão inseridas via JavaScript -->
+    </div>
+
+    <!-- Seção especial Sementes e propagação -->
+    <div class="seeds-section" id="sementes">
+        <div class="title-wrapper">
+            <h2 class="section-title" style="border-bottom-color: #f4a261;">🌰 Sementes da esperança</h2>
+        </div>
+        <div class="seed-flex" id="seedDynamic">
+            <!-- Sementes via JavaScript -->
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem;">✨ Cada semente é um tesouro genético. Bancos de sementes e viveiros comunitários são cruciais para reintrodução na natureza.</p>
+    </div>
+
+    <!-- Prevenção e cuidados -->
+    <div class="title-wrapper" id="prevenir">
+        <h2 class="section-title">🛡️ Como prevenir a extinção?</h2>
+    </div>
+    <div class="prevention-grid">
+        <div class="tip-card">
+            <h4>🌱 Viveiros comunitários</h4>
+            <p>Produzir mudas de espécies ameaçadas em viveiros locais, envolvendo escolas e comunidades, garante propagação e educação ambiental.</p>
+        </div>
+        <div class="tip-card">
+            <h4>🚫 Fim do desmatamento ilegal</h4>
+            <p>Fiscalização e certificação de madeira reduzem a perda de habitat. Apoie reservas legais e corredores ecológicos.</p>
+        </div>
+        <div class="tip-card">
+            <h4>🧬 Bancos de sementes</h4>
+            <p>Coletar sementes de árvores raras e armazenar em condições controladas para restauração futura de áreas degradadas.</p>
+        </div>
+        <div class="tip-card">
+            <h4>📢 Conscientização</h4>
+            <p>Campanhas, trilhas interpretativas e projetos de ciência cidadã aumentam o engajamento público e a valorização da flora nativa.</p>
+        </div>
+        <div class="tip-card">
+            <h4>🤝 Políticas públicas</h4>
+            <p>Incentivos para propriedades que conservam árvores ameaçadas e criação de unidades de conservação com foco em espécies raras.</p>
+        </div>
+        <div class="tip-card">
+            <h4>💚 Consumo consciente</h4>
+            <p>Evitar produtos de madeira de origem duvidosa, optar por móveis certificados e plantar árvores nativas no jardim.</p>
+        </div>
+    </div>
+
+    <!-- Ação Interativa: "Adotar simbolicamente" -->
+    <div class="interactive-area" id="acao">
+        <h3 style="color: var(--text-color);">🌿 Adote uma árvore simbólica e ganhe dicas de sementes</h3>
+        <p style="margin-bottom: 20px;">Escolha uma das espécies ameaçadas e receba uma mensagem de incentivo para ajudar na preservação.</p>
+        <select id="treeSelect" style="padding: 10px 20px; border-radius: 30px; border: 1px solid #9bc48f; font-size: 1rem;">
+            <option value="Pau-Brasil">🌳 Pau-Brasil (Paubrasilia echinata)</option>
+            <option value="Araucária">🌲 Araucária angustifolia</option>
+            <option value="Jacarandá-da-Bahia">🌿 Jacarandá-da-Bahia</option>
+            <option value="Castanheira">🌰 Castanheira-da-Amazônia</option>
+        </select>
+        <button class="btn-adote" id="adoptButton">🌸 Proteger esta árvore</button>
+        <div id="feedbackMessage">💚 Clique e faça parte da mudança</div>
+    </div>
+</div>
+
+<footer>
+    <p>🌍 Guardian Trees — Preservar a biodiversidade é garantir o futuro. Cada árvore e semente importa. 🌱</p>
+    <p style="margin-top: 0.8rem;">Informações científicas inspiradas em espécies criticamente ameaçadas da Mata Atlântica, Amazônia e Cerrado.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
