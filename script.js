@@ -1,43 +1,57 @@
 // Base de dados: árvores ameaçadas + informações de sementes e prevenção
+// Usando imagens em Base64 (embutidas no código) para garantir que funcionem sempre
+
+// Imagens em Base64 das árvores
+const imagensArvores = {
+    pauBrasil: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%232c6e49'/%3E%3Ccircle cx='200' cy='120' r='50' fill='%23ffd700'/%3E%3Crect x='190' y='170' width='20' height='100' fill='%238B4513'/%3E%3Ccircle cx='160' cy='100' r='35' fill='%23ffd700'/%3E%3Ccircle cx='240' cy='100' r='35' fill='%23ffd700'/%3E%3Ctext x='200' y='260' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3EPau-Brasil%3C/text%3E%3C/svg%3E",
+    
+    araucaria: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%232c6e49'/%3E%3Cpolygon points='200,40 160,100 180,100 150,160 170,160 140,220 260,220 230,160 250,160 220,100 240,100' fill='%233a7a3a'/%3E%3Crect x='190' y='220' width='20' height='60' fill='%238B4513'/%3E%3Ctext x='200' y='280' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3EArauc%C3%A1ria%3C/text%3E%3C/svg%3E",
+    
+    jacaranda: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%232c6e49'/%3E%3Ccircle cx='200' cy='110' r='55' fill='%239b59b6'/%3E%3Crect x='190' y='165' width='20' height='100' fill='%238B4513'/%3E%3Ccircle cx='160' cy='90' r='30' fill='%23bb6bd9'/%3E%3Ccircle cx='240' cy='90' r='30' fill='%23bb6bd9'/%3E%3Ccircle cx='200' cy='70' r='25' fill='%23d291ff'/%3E%3Ctext x='200' y='260' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3EJacarand%C3%A1%3C/text%3E%3C/svg%3E",
+    
+    castanheira: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%232c6e49'/%3E%3Ccircle cx='200' cy='130' r='60' fill='%234a7a4a'/%3E%3Crect x='190' y='190' width='20' height='80' fill='%238B4513'/%3E%3Ccircle cx='180' cy='110' r='25' fill='%236a9a6a'/%3E%3Ccircle cx='220' cy='110' r='25' fill='%236a9a6a'/%3E%3Ccircle cx='200' cy='90' r='20' fill='%238aba8a'/%3E%3Ctext x='200' y='265' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3ECastanheira%3C/text%3E%3C/svg%3E"
+};
+
+// Dados das árvores com imagens em Base64
 const treesData = [
     {
         name: "Pau-Brasil",
         scientific: "Paubrasilia echinata",
         status: "Em perigo (IUCN)",
-        imgBg: "url('https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')",
-        seedDescription: "Semente lenhosa, pequena e achatada, dispersa por pássaros. Coleta deve ser autorizada; germinação lenta mas viável.",
+        imgBg: imagensArvores.pauBrasil,
+        seedDescription: "🌱 Semente pequena e achatada, dispersa por pássaros. Germinação lenta mas viável.",
         howHelp: "Evite comprar móveis de pau-brasil ilegal; apoie projetos de restauração na Mata Atlântica."
     },
     {
         name: "Araucária",
         scientific: "Araucaria angustifolia",
         status: "Criticamente em perigo",
-        imgBg: "url('https://images.unsplash.com/photo-1594652478246-9befd602b7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')",
-        seedDescription: "Pinhão (semente comestível) – fundamental para fauna. Armazenar em local fresco e estratificar para germinar.",
-        howHelp: "Não coletar pinhões em excesso, plantar mudas de araucária em áreas de altitude, proteger remanescentes."
+        imgBg: imagensArvores.araucaria,
+        seedDescription: "🌰 Pinhão - semente comestível fundamental para fauna. Estratificação para germinar.",
+        howHelp: "Não coletar pinhões em excesso, plantar mudas em áreas de altitude."
     },
     {
         name: "Jacarandá-da-Bahia",
         scientific: "Dalbergia nigra",
         status: "Ameaçada (exploração madeireira)",
-        imgBg: "url('https://images.unsplash.com/photo-1601834656876-6e6ed6d6eb6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')",
-        seedDescription: "Sementes tipo sâmara, aladas. Germinação fácil em substrato arenoso. Conservação ex situ em jardins botânicos.",
-        howHelp: "Denuncie comércio ilegal, plante jacarandá em restauração ecológica."
+        imgBg: imagensArvores.jacaranda,
+        seedDescription: "🍂 Sementes tipo sâmara, aladas. Germinação fácil em substrato arenoso.",
+        howHelp: "Denuncie comércio ilegal, plante em restauração ecológica."
     },
     {
         name: "Castanheira",
         scientific: "Bertholletia excelsa",
         status: "Vulnerável (sobre-exploração)",
-        imgBg: "url('https://images.unsplash.com/photo-1551301097-811b5f9e2d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')",
-        seedDescription: "Castanhas (sementes gigantes) dentro de ouriço. Dependente de abelhas para polinização. Ideais para replantio.",
-        howHelp: "Consumir castanha com certificação de origem sustentável, apoiar cooperativas extrativistas."
+        imgBg: imagensArvores.castanheira,
+        seedDescription: "🥜 Castanhas dentro de ouriço. Dependente de abelhas para polinização.",
+        howHelp: "Consuma castanha certificada, apoie cooperativas extrativistas."
     }
 ];
 
 // Dados para sementes em destaque
 const seedsExtra = [
     { name: "Pinhão da Araucária", icon: "🌰", description: "Alimento e semente; germinação após quebra de dormência natural. Coleta consciente." },
-    { name: "Semente de Pau-Brasil", icon: "🫘", description: "Rica em tanino, precisa de tratamento pré-germinativo. Essencial para recuperação." },
+    { name: "Semente de Pau-Brasil", icon: "🟤", description: "Rica em tanino, precisa de tratamento pré-germinativo. Essencial para recuperação." },
     { name: "Ouriço da Castanheira", icon: "🌰", description: "Cada ouriço contém até 20 castanhas. Dispersão primária por roedores." },
     { name: "Sâmara do Jacarandá", icon: "🍂", description: "Dispersão pelo vento, fácil cultivo em viveiro. Muito procurada por projetos." }
 ];
@@ -51,7 +65,7 @@ function renderTreeCards() {
         const card = document.createElement('div');
         card.className = 'tree-card';
         card.innerHTML = `
-            <div class="card-img" style="background-image: ${tree.imgBg}; background-size: cover; background-position: center;"></div>
+            <div class="card-img" style="background-image: url('${tree.imgBg}'); background-size: cover; background-position: center;"></div>
             <div class="card-content">
                 <span class="extinction-status">⚠️ ${tree.status}</span>
                 <h3>${tree.name}</h3>
@@ -83,6 +97,40 @@ function renderSeeds() {
     });
 }
 
+// Função para adicionar imagens de fundo mais realistas (opcional - com emojis grandes)
+function addEmojiBackground() {
+    const cards = document.querySelectorAll('.tree-card');
+    const emojiMap = {
+        'Pau-Brasil': '🌳',
+        'Araucária': '🌲',
+        'Jacarandá': '🌸',
+        'Castanheira': '🌰'
+    };
+    
+    cards.forEach(card => {
+        const title = card.querySelector('h3')?.innerText || '';
+        const imgDiv = card.querySelector('.card-img');
+        const emoji = emojiMap[title] || '🌿';
+        
+        // Adicionar um overlay de emoji além da imagem SVG
+        const emojiOverlay = document.createElement('div');
+        emojiOverlay.style.cssText = `
+            position: absolute;
+            font-size: 80px;
+            text-align: center;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+            pointer-events: none;
+        `;
+        emojiOverlay.textContent = emoji;
+        imgDiv.style.position = 'relative';
+        imgDiv.appendChild(emojiOverlay);
+    });
+}
+
 // Configurar adoção simbólica
 function setupAdoption() {
     const adoptBtn = document.getElementById('adoptButton');
@@ -91,15 +139,15 @@ function setupAdoption() {
     if (!adoptBtn || !treeSelect || !feedbackDiv) return;
 
     const tipsByTree = {
-        "Pau-Brasil": "✨ Dica de prevenção: Apoie o replantio de mudas de Pau-Brasil no litoral brasileiro e evite o comércio ilegal de madeira. Você pode doar para ONGs de restauração florestal!",
-        "Araucária": "✨ Dica de prevenção: Plante um pinhão em um vaso e, quando crescer, doe para um parque. Promova a educação sobre a importância da araucária para a fauna.",
-        "Jacarandá-da-Bahia": "✨ Dica de prevenção: Denuncie madeireiros ilegais, compartilhe conhecimento e incentive o cultivo em jardins botânicos. Cada muda faz diferença!",
-        "Castanheira": "✨ Dica de prevenção: Consuma apenas castanhas com certificação florestal, ajude a combater o desmatamento na Amazônia, apoie comunidades extrativistas."
+        "Pau-Brasil": "✨ Dica: Apoie o replantio de mudas de Pau-Brasil no litoral brasileiro!",
+        "Araucária": "✨ Dica: Plante um pinhão em um vaso e doe para um parque quando crescer!",
+        "Jacarandá-da-Bahia": "✨ Dica: Denuncie madeireiros ilegais e incentive o cultivo!",
+        "Castanheira": "✨ Dica: Consuma castanhas certificadas e ajude a Amazônia!"
     };
     
     adoptBtn.addEventListener('click', () => {
         const selected = treeSelect.value;
-        const tip = tipsByTree[selected] || "💪 Plante uma muda nativa no seu quintal ou participe de mutirões de reflorestamento. Toda ação conta!";
+        const tip = tipsByTree[selected] || "💪 Plante uma muda nativa no seu quintal!";
         feedbackDiv.innerHTML = `🌿 Obrigado por proteger <strong>${selected}</strong>! ${tip} 🌎`;
         feedbackDiv.style.backgroundColor = "var(--feedback-bg)";
         
@@ -119,7 +167,7 @@ function attachCardEventDelegation() {
             const titleElem = targetCard.querySelector('h3');
             if (titleElem) {
                 const treeName = titleElem.innerText;
-                alert(`🌳 ${treeName} está ameaçada! Você pode ajudar espalhando informações sobre suas sementes e plantando mudas. Visite seção de prevenção para saber mais.`);
+                alert(`🌳 ${treeName} está ameaçada! Ajude espalhando informações e plantando mudas.`);
             }
         }
     });
@@ -155,7 +203,6 @@ function setupDarkMode() {
     const toggleBtn = document.getElementById('darkModeToggle');
     const htmlElement = document.documentElement;
     
-    // Verificar preferência salva no localStorage
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         htmlElement.setAttribute('data-theme', 'dark');
@@ -165,7 +212,6 @@ function setupDarkMode() {
         toggleBtn.innerHTML = '🌙 Dark Mode';
     }
     
-    // Evento de clique do botão
     toggleBtn.addEventListener('click', () => {
         const currentTheme = htmlElement.getAttribute('data-theme');
         if (currentTheme === 'light') {
@@ -186,7 +232,7 @@ function attachSeedEvents() {
     seedItems.forEach(item => {
         item.addEventListener('click', () => {
             const seedName = item.querySelector('h4')?.innerText || "semente";
-            alert(`🌰 ${seedName}: Armazenar adequadamente e plantar em ambiente protegido aumenta chances de germinação. Salvaguardar estas sementes é essencial.`);
+            alert(`🌱 ${seedName}: Armazenar em local fresco e plantar em ambiente protegido!`);
         });
     });
 }
@@ -213,8 +259,9 @@ function init() {
     setupDarkMode();
     observeSeedItems();
     attachSeedEvents();
+    setTimeout(addEmojiBackground, 100);
     
-    console.log("%c🌱 Bem-vindo ao Guardian Trees! Ajude a preservar árvores em extinção, conheça cada semente. 🌱", "color: #1f6e43; font-size: 14px; font-weight: bold;");
+    console.log("%c🌱 Guardian Trees - Protegendo árvores em extinção! 🌱", "color: #2c6e49; font-size: 16px; font-weight: bold;");
 }
 
 // Executar após carregamento do DOM
